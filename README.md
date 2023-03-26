@@ -1,18 +1,38 @@
 # Equation Solver
 
+Here is the link to the GITHUB repository : https://github.com/hlangananigama/foondamate
+
 This is an implementation of an equation solver that takes a linear-first order equation as input (type string data type) and outputs a maximum of five steps on how to approach the solution.
 
 There is both an Object Oriented Programming (OOP) implementation of the solution, as well as a functional approach. Both produce the same steps and results. The file names are descriptive and should make it easy to identify which one is which.
 
+## Requirements
+
+- Knoledge of Git Bash Commands
+- Python installed
+
 ## How to run
 
-1. Open your terminal (MacOS) and clone the repository onto the directory you would like to work in.
-2. Change directory into the folder that was just cloned.
-3. Change directory into OOP folder: `cd solver_OOP`
-4. Paste or type the following command on the CLI: `python solver_oop.py "2(4x + 3) + 6 = 24 - 4x"`
-5. To run the unit test and integration test files, use the same command as step 3, but replace `solver_oop.py` with `unittest_solver_oop.py` or `intergrationtest_solver_oop.py`. No need for an equation input for tests!
+1.  Open your terminal (MacOS) and clone the repository onto the directory you would like to work in.
 
-Error handling is included to explain what is wrong if the input is not in the correct format (missing quotation marks, for example).
+    git clone https://github.com/hlangananigama/foondamate.git
+
+2.  Change directory into the folder that was just cloned.
+
+        cd foondamate/solver_oop
+
+3.  Paste or type the following command on the CLI: `python solver_oop.py "2(4x + 3) + 6 = 24 - 4x"`
+4.  To run the unit test and integration test files, use the same command as step 3, but replace `solver_oop.py` with `unittest_solver_oop.py` or `intergrationtest_solver_oop.py`. No need for an equation input for tests! Copy and run each line separately for each of the following, make sure you are in the correct folder for the OOP and Functional implementations.
+
+        	python solver_oop.py "2(4x + 3) + 6 = 24 - x"
+        	python unittest_solver_oop.py
+        	python intergrationtest_solver_oop.py
+
+        	python solver_func.py "2(4x + 3) + 6 = 24 -4x"
+        	python unittest_solver_func.py
+        	python intergrationtest_solver_func.py
+
+5.  Error handling is included to explain what is wrong if the input is not in the correct format (missing quotation marks, for example).
 
 Student creativity is always encouraged, and this is only one way (not the only way) to approach the problem. Here are the steps in the solution approach:
 

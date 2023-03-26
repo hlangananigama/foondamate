@@ -1,5 +1,6 @@
 import argparse
 import sympy
+import re
 
 
 class LinearEquationSolver:
@@ -8,8 +9,9 @@ class LinearEquationSolver:
 
     def rearrange_equation(self):
 
-        equation = self.equation
+        equation = self.equation.strip()
 
+        # Give the student/user an example of how to put input equation
         if "*" in equation:
             print(
                 f"\n\nDo not put the multiplication sign. Here is an example: '4x(2 + 3) = 3 + 23x'\n\n")
@@ -23,13 +25,17 @@ class LinearEquationSolver:
         lhs = lhs.strip()
         rhs = rhs.strip()
 
-        # Add multiplication sign before any opening bracket
+        # Simpy library requires the multiplication - replace parentheses
         lhs = lhs.replace('(', '*(')
         rhs = rhs.replace('(', '*(')
 
-        # Replace 'x' with '*x' for left and right-hand sides
+        # Simpy library requires the multiplication
         lhs = lhs.replace('x', '*x')
         rhs = rhs.replace('x', '*x')
+
+        # Handle the edge-case where the coefficient is 1
+        lhs = re.sub(r'(\s)\*x', r'\g<1>1*x', lhs)
+        rhs = re.sub(r'(\s)\*x', r'\g<1>1*x', rhs)
 
         try:
             # Parse the left-hand side expression using sympy
@@ -46,14 +52,13 @@ class LinearEquationSolver:
 
             simplified_equation_str = str(simplified_equation) + ' = 0'
 
-            # add something here to print
-
             print(
                 f"2. Move everything to one side (preferrably the LHS) and cancel out like terms to simplify as follows:\n\n   {simplified_equation_str.replace('*', '')}\n\n")
             # print(simplified_equation_str)
 
             return simplified_equation_str
 
+        # Error Handling - unlikely to be an error because most edge cases have been accounted for - but you never know!
         except (ValueError, TypeError, AttributeError, SyntaxError):
             print(
                 "Invalid equation format. Please make sure the equation is of the correct format and try again.")

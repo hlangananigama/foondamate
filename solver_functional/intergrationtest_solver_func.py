@@ -1,5 +1,5 @@
 import unittest
-from foonda import solve_equation
+from solver_func import solve_equation
 
 
 class TestSolveEquationIntegration(unittest.TestCase):

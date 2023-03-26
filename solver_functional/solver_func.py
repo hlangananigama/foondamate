@@ -1,11 +1,12 @@
 import argparse
 import sympy
+import re
 
 
 def rearrange_equation(equation):
     # Split the equation string at the equals sign
 
-    print(f"This is the starting equation:\n\n{equation}\n\n")
+    print(f"\n\n1. This is the starting equation:\n\n   {equation}\n\n")
 
     lhs, rhs = equation.split('=')
 
@@ -20,6 +21,9 @@ def rearrange_equation(equation):
     # Replace 'x' with '*x' for left and right-hand sides
     lhs = lhs.replace('x', '*x')
     rhs = rhs.replace('x', '*x')
+
+    lhs = re.sub(r'(\s)\*x', r'\g<1>1*x', lhs)
+    rhs = re.sub(r'(\s)\*x', r'\g<1>1*x', rhs)
 
     try:
         # Parse the left-hand side expression using sympy
@@ -39,7 +43,7 @@ def rearrange_equation(equation):
         # add something here to print
 
         print(
-            f"Move everything to one side (preferrably the LHS) and cancel out like terms to simplify as follows:\n\n{simplified_equation_str.replace('*', '')}\n\n")
+            f"2. Move everything to one side (preferrably the LHS) and cancel out like terms to simplify as follows:\n\n   {simplified_equation_str.replace('*', '')}\n\n")
         # print(simplified_equation_str)
 
         return simplified_equation_str
@@ -79,7 +83,7 @@ def move_constants_right(equation_str):
         new_equation = RHS + ' = ' + lhs
 
     print(
-        f"The next step is to move the constant to the right, keep x value on the left side:\n\n{new_equation.replace('*', '')}\n\n")
+        f"3. The next step is to move the constant to the right, keep x value on the left side:\n\n   {new_equation.replace('*', '')}\n\n")
     # print(new_equation)
     return new_equation
     # Implementation of move_constants_right function
@@ -103,9 +107,10 @@ def final_solution(rearranged_eq):
     # Format the solution as a string
     x_str = 'x = {}'.format(x)
 
-    print(f"Divide the right side with the coefficient of x:\n\n")
+    print(
+        f"4. Divide the right side with the coefficient of x:\n\n   x = {const}/{x_coeff}\n\n")
 
-    # print(f"finally, the solution:\n x = ")
+    print(f"5. finally, the solution:\n\n")
 
     return x_str
 
@@ -129,7 +134,7 @@ def solve_equation(equation):
         return "There is no x value to solve for - there is no solution!"
 
         # Return the solution and the final equation
-    return f"{x_str}\n\n"
+    return f"{x_str}"
 
 
 def main():
@@ -144,7 +149,7 @@ def main():
     solution = solve_equation(args.equation)
 
     # Print the solution
-    print(solution)
+    print(f"   {solution}")
 
 
 if __name__ == '__main__':

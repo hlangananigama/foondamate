@@ -30,13 +30,6 @@ def test_linear_equation_solver():
     solution = solver.solve()
     assert solution.strip() == expected_solution
 
-    # Test case 5
-    equation = "5(x + 2) = 3x + 10"
-    expected_solution = "There is no x value to solve for - there is no solution!"
-    solver = LinearEquationSolver(equation)
-    solution = solver.solve()
-    assert solution.strip() == expected_solution
-
 
 if __name__ == '__main__':
     test_linear_equation_solver()

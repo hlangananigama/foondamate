@@ -1,5 +1,5 @@
 import unittest
-from foonda import rearrange_equation, move_constants_right, solve_equation
+from solver_func import rearrange_equation, move_constants_right, solve_equation
 
 
 class TestRearrangeEquation(unittest.TestCase):
